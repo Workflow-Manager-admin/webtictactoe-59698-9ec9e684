@@ -1,0 +1,187 @@
+/* Root theme -- colors from configuration */
+:root {
+  --primary: #1976d2;
+  --secondary: #424242;
+  --accent: #ffca28;
+  --bg-primary: #fff;
+  --bg-secondary: #f5f7fa;
+  --text-primary: #282c34;
+  --text-secondary: #757575;
+  --border-color: #e0e0e0;
+  --shadow: 0 3px 24px 0 rgba(30,44,76,0.10), 0 2px 4px 0 rgba(33,41,52,0.06);
+  --square-size: 90px;
+}
+[data-theme="dark"] {
+  --bg-primary: #222831;
+  --bg-secondary: #2c3142;
+  --text-primary: #f4f6fa;
+  --text-secondary: #e0e0e0;
+  --border-color: #52587a;
+}
+
+.App {
+  text-align: center;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
+}
+
+.ttt-centered-header {
+  background: var(--bg-secondary);
+  border-radius: 28px;
+  padding: 40px 28px 32px 28px;
+  min-width: 340px;
+  margin: 40px auto 0 auto;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: var(--shadow);
+}
+
+.ttt-title {
+  color: var(--primary);
+  font-size: 2.1rem;
+  margin: 0 0 22px 0;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.ttt-status {
+  margin-bottom: 18px;
+  font-size: 1.2rem;
+  color: var(--secondary);
+  font-weight: 600;
+  background: var(--accent);
+  border-radius: 16px;
+  padding: 8px 18px;
+  min-width: 192px;
+  box-shadow: 0 1px 6px 0 rgba(0,0,0,0.03);
+}
+
+.ttt-board {
+  display: grid;
+  grid-template-columns: repeat(3, var(--square-size));
+  grid-template-rows: repeat(3, var(--square-size));
+  gap: 12px;
+  background: var(--border-color);
+  border-radius: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 1px 6px 0 rgba(0,0,0,0.03);
+}
+
+.ttt-square {
+  width: var(--square-size);
+  height: var(--square-size);
+  font-size: 2.7rem;
+  font-weight: 700;
+  color: var(--primary);
+  background: #fff;
+  border: 2px solid var(--border-color);
+  border-radius: 16px;
+  cursor: pointer;
+  transition: 
+    box-shadow .13s,
+    background .15s,
+    border .12s,
+    color .12s;
+  box-shadow: 0 2px 8px 0 rgba(33,41,52,0.02);
+  outline: none;
+  user-select: none;
+  will-change: transform;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ttt-square:disabled {
+  cursor: default;
+  background: var(--bg-secondary);
+  color: var(--secondary);
+  opacity: 0.7;
+}
+.ttt-square:not(:disabled):hover {
+  border-color: var(--primary);
+  background: var(--accent);
+  color: var(--secondary);
+  transform: translateY(-2px) scale(1.06);
+}
+
+.ttt-restart-btn {
+  margin: 10px 0;
+  background-color: var(--primary);
+  color: #fff;
+  font-size: 1.02rem;
+  font-weight: 600;
+  padding: 10px 26px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px 0 rgba(33,41,52,0.08);
+  transition: background .2s, box-shadow .2s, transform .1s;
+  letter-spacing: 0.03em;
+}
+.ttt-restart-btn:hover {
+  background: var(--accent);
+  color: var(--secondary);
+  box-shadow: 0 3px 13px 0 rgba(33,41,52,0.13);
+  transform: translateY(-2px) scale(1.04);
+}
+.ttt-restart-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  background: var(--accent);
+  color: var(--secondary);
+  border: none;
+  border-radius: 14px;
+  padding: 11px 27px;
+  font-size: 17px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(30,30,80,0.09);
+  transition: all .24s;
+  z-index: 4;
+}
+.theme-toggle:hover {
+  background: var(--primary);
+  color: #fff;
+  opacity: 0.97;
+  transform: translateY(-2px);
+}
+@media (max-width: 515px) {
+  .ttt-board {
+    --square-size: 60px;
+  }
+  .ttt-centered-header {
+    padding: 14px 2vw 24px 2vw;
+    min-width: unset;
+  }
+  .ttt-title {
+    font-size: 1.37rem;
+  }
+}
+
+.ttt-footer {
+  margin-top: 18px;
+  color: var(--text-secondary);
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  user-select: none;
+}
+
+.ttt-footer-accent { color: var(--accent); font-weight: 700; }
+.ttt-footer-primary { color: var(--primary); font-weight: 700; }
+
+::-webkit-scrollbar {
+  width: 10px;
+  background: var(--bg-secondary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+}
+
